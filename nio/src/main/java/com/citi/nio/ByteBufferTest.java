@@ -9,13 +9,13 @@ public class ByteBufferTest {
   public void test_bytebuffer(){
 	  ByteBuffer byteBuffer=ByteBuffer.allocate(10);
 	  byteBuffer.put((byte)'H').put((byte)'A').put((byte)'B').put((byte)'B').put((byte)'B');
-	  System.out.println(byteBuffer);
+	  int position = byteBuffer.position();
 	  byteBuffer.flip();
-	  System.out.println(byteBuffer);
-	  byte mybyteArray[] =new byte[10];
+	  int position1 = byteBuffer.position();
+	  byte mybyteArray[] =new byte[5];
 	  for(int i=0;byteBuffer.hasRemaining();i++){
 		  mybyteArray[i]=byteBuffer.get();
-		  System.out.println(byteBuffer);
 	  }
+	  System.out.println(mybyteArray.toString());
   }
 }
