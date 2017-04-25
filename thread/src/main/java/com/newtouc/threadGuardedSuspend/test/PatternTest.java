@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 import java.util.regex.Pattern;
 

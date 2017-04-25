@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

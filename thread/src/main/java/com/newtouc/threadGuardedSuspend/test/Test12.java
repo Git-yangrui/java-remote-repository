@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 public class Test12 {
    public static void main(String[] args) {

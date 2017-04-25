@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 import java.util.concurrent.ExecutorService;
 
@@ -8,15 +8,15 @@ import java.util.concurrent.Semaphore;
 
 public class TestSemaphore {
         public static void main(String[] args) {
-        // Ïß³Ì³Ø
+        // ï¿½ß³Ì³ï¿½
 
         ExecutorService exec = Executors.newCachedThreadPool();
 
-        // Ö»ÄÜ5¸öÏß³ÌÍ¬Ê±·ÃÎÊ
+        // Ö»ï¿½ï¿½5ï¿½ï¿½ï¿½ß³ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½
 
         final Semaphore semp = new Semaphore(5);
 
-         // Ä£Äâ20¸ö¿Í»§¶Ë·ÃÎÊ
+         // Ä£ï¿½ï¿½20ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½
 
          for (int index = 0; index < 20; index++) {
 
@@ -25,11 +25,11 @@ public class TestSemaphore {
               Runnable run = new Runnable() {
                      public void run() {
                         try {
-                            // »ñÈ¡Ðí¿É
+                            // ï¿½ï¿½È¡ï¿½ï¿½ï¿½
                             semp.acquire();
                             System.out.println("Accessing: " + NO);
                             Thread.sleep((long) (Math.random() * 10000));
-                            // ·ÃÎÊÍêºó£¬ÊÍ·Å
+                            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½
                             semp.release();
                             System.out.println("-----------------"+semp.availablePermits());
                         } catch (InterruptedException e) {
@@ -39,7 +39,7 @@ public class TestSemaphore {
                       };
               exec.execute(run);
      }
-     // ÍË³öÏß³Ì³Ø
+     // ï¿½Ë³ï¿½ï¿½ß³Ì³ï¿½
          exec.shutdown();
 
    }

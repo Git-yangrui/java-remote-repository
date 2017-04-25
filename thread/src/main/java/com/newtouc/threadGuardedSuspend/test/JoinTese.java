@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 public class JoinTese {
 	public static void main(String[] args) {
@@ -13,9 +13,9 @@ public class JoinTese {
 		};
 		
 		Thread thread1=new Thread(runa);
-		thread1.setName("Ïß³Ì1");
+		thread1.setName("ï¿½ß³ï¿½1");
 		Thread thread2=new Thread(runa);
-		thread2.setName("Ïß³Ì2");
+		thread2.setName("ï¿½ß³ï¿½2");
 		thread1.start();
 		thread2.start();
 		try {

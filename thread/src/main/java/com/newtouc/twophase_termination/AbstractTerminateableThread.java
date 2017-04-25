@@ -4,17 +4,16 @@ public abstract class AbstractTerminateableThread
                   extends Thread implements Teiminatable {
 	
      /**
-      * Ïß³ÌÔİÍ£µÄ´ú±í ±ê¼ÇÀà
+      * ï¿½ß³ï¿½ï¿½ï¿½Í£ï¿½Ä´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
       */
     public  final TerminationToken terminationToken;
-	//ÊØ»¤Ïß³Ì½øĞĞ¼àÌı
+	//ï¿½Ø»ï¿½ï¿½ß³Ì½ï¿½ï¿½Ğ¼ï¿½ï¿½ï¿½
     private Thread thread;
     public AbstractTerminateableThread(){
     	
     	this(new TerminationToken());
     	thread=new Thread(new Runnable() {
 			
-			@Override
 			public void run() {
 				for(;;){
 					if(terminationToken.reservations.get()==0){
@@ -35,24 +34,24 @@ public abstract class AbstractTerminateableThread
     	terminationToken.register(this);
     }
     /**
-     * Áô¸ø×ÓÀàÊµÏÖÆäÏß³Ì´¦ÀíÂß¼­
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì´ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
      * @throws Exception
      */
     protected abstract void doRun() throws Exception;
     
      /**
-      * Áô¸ø×ÓÀàÊµÏÖ£¬ÓÃÓÚÊµÏÖÏß³ÌÍ£Ö¹ºóµÄÒ»Ğ©ÇåÀí
+      * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ß³ï¿½Í£Ö¹ï¿½ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½
       */
     protected void doCleanUp(Exception cause) {
-		//Ê¡ÂÔ
+		//Ê¡ï¿½ï¿½
 	}
 
 	/**
-	 * Áô¸ø×ÓÀàÊµÏÖ¡£ÓÃÓÚÖ´ĞĞÏß³ÌÍ£Ö¹ËùĞèÒªµÄ²Ù×÷
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ß³ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä²ï¿½ï¿½ï¿½
 	 */
 	protected void doTerminate() {
 		
-		//Ê¡ÂÔ
+		//Ê¡ï¿½ï¿½
 	}
 	@Override
 	public void run() {
@@ -88,15 +87,15 @@ public abstract class AbstractTerminateableThread
 	@Override
 	public void terminate() {
 		terminationToken.setToShutDown(true);
-		//System.out.println("terminate·½·¨  terminationToken.setToShutDown(true) ºó"+System.currentTimeMillis());
+		//System.out.println("terminateï¿½ï¿½ï¿½ï¿½  terminationToken.setToShutDown(true) ï¿½ï¿½"+System.currentTimeMillis());
 		try {
 			doTerminate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
-			//Ïß³ÌÃ»ÓĞÈÎÎñÁË  Ç¿ÖÆÍ£Ö¹ productÏß³ÌÒ»Ö±Ã»ÓĞÍùÀïÃæÈû¶«Î÷£¬¹ÊterminationToken.reservations.get()Ò»Ö±Îª0£»
+			//ï¿½ß³ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  Ç¿ï¿½ï¿½Í£Ö¹ productï¿½ß³ï¿½Ò»Ö±Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½terminationToken.reservations.get()Ò»Ö±Îª0ï¿½ï¿½
 			 if(terminationToken.reservations.get()<=0){
-				 //productÏß³Ì±»Ç¿ÖÆÖÕÖ¹
+				 //productï¿½ß³Ì±ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½Ö¹
 				 super.interrupt();
 			 }
 		}
@@ -107,9 +106,9 @@ public abstract class AbstractTerminateableThread
 		terminate();
 		if(waitUtilThreadTerminated){
 			try {
-				//System.out.println("join ·½·¨qian"+System.currentTimeMillis());
+				//System.out.println("join ï¿½ï¿½ï¿½ï¿½qian"+System.currentTimeMillis());
 				this.join();
-				//System.out.println("join ·½·¨hou "+System.currentTimeMillis());
+				//System.out.println("join ï¿½ï¿½ï¿½ï¿½hou "+System.currentTimeMillis());
 			} catch (Exception e) {
 				Thread.currentThread().interrupt();
 			}

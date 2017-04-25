@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,7 +38,7 @@ public class Test111 {
 //				e.printStackTrace();
 			}finally{
 				lock.unlock();
-				System.out.println(Thread.currentThread().getName()+"ÊÍ·ÅËø");
+				System.out.println(Thread.currentThread().getName()+"ï¿½Í·ï¿½ï¿½ï¿½");
 				
 			}
 		}

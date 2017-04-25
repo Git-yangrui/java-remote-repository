@@ -1,4 +1,4 @@
-package com.newtouh.threadGuardedSuspend.test;
+package com.newtouc.threadGuardedSuspend.test;
 
 import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -18,7 +18,7 @@ public class Test1 {
 				try {
 					Thread.sleep(1000);
 					blockingQueue.put("zheshishuzi"+j);
-					System.out.println("·ÅÈëÊý¾ÝÍê±Ï£º£º£º"+"zheshishuzi"+j);
+					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½"+"zheshishuzi"+j);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class Test1 {
 				try {
 					Thread.sleep(1000);
 					String take = blockingQueue.take();
-					System.out.println("È¡³öÊý¾ÝÍê±Ï£º£º£º"+take);
+					System.out.println("È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½"+take);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
