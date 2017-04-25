@@ -27,7 +27,6 @@ public class ReusableCodeExzample {
 	private static class SomeService extends AbstractSerilizer<Task, String>{
 		public SomeService(){
 			super(new ArrayBlockingQueue<Runnable>(100), new TaskProcessor<Task, String>() {
-				@Override
 				public String doProcess(Task task) throws Exception {
 					System.out.println("["+task.id+"]"+task.message);
 					return task.message+"accepted";

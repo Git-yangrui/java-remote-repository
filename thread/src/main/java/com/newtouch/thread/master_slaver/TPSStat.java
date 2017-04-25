@@ -17,12 +17,6 @@ import com.newtouc.twophase_termination.AbstractTerminateableThread;
 
 public class TPSStat {
 	
-
-	
-	
-	
-	
-	
 	
 	@SuppressWarnings("unused")
 	private static class Master{
@@ -31,7 +25,7 @@ public class TPSStat {
 		private final String includedOperationNames;
 		private final String destinationSysName;
 		
-		//Ã¿´ÎÅÉ·¢¸øÄ³¸öslaverÏß³ÌµÄ¸öÊý
+		//Ã¿ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½Ä³ï¿½ï¿½slaverï¿½ß³ÌµÄ¸ï¿½ï¿½ï¿½
 		private static final int NUMBER_OF_FILES_FOR_EACH_DISPATH=5;
 	    private static final int WORKER_COUNT=Runtime.getRuntime().availableProcessors();
 		
@@ -44,7 +38,7 @@ public class TPSStat {
 	    }
 	    public ConcurrentMap<String, AtomicInteger> calculate(
 	    		BufferedReader reader) throws Exception{
-	    	//repositoryÊÇËùÓÐÏß³Ì¹²ÏíµÄ
+	    	//repositoryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì¹ï¿½ï¿½ï¿½ï¿½
 	    	ConcurrentMap<String, AtomicInteger> repository=new ConcurrentSkipListMap<String, AtomicInteger>();
 	    	Worker[] workers=createAndStartWorkers(repository);
 	    	dispatchTask(reader,workers);
@@ -59,7 +53,7 @@ public class TPSStat {
 			while((redeRecord=reader.readLine())!=null){
 				ste.add(redeRecord);
 				fileCount++;
-				//¿ªÊ¼¸ù¾Ý¶ÁÈ¡µÄÊý¾Ý·Ö·¢ £¬·Ö·¢µÄ¹æÔò£ºÃ¿5ÌõÊý¾Ý¸øÃ¿¸ö×ÓÏß³ÌÈ¥´¦Àí
+				//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ý¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ý·Ö·ï¿½ ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½Ã¿5ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½È¥ï¿½ï¿½ï¿½ï¿½
 				if(0==(fileCount%NUMBER_OF_FILES_FOR_EACH_DISPATH)){
 					workerIndex=(workerIndex+1)%WORKER_COUNT;
 					workers[workerIndex].submitWorkLoad(ste);
@@ -76,7 +70,6 @@ public class TPSStat {
 			Worker worker;
 			UncaughtExceptionHandler eh =new UncaughtExceptionHandler() {
 				
-				@Override
 				public void uncaughtException(Thread t, Throwable e) {
 					e.printStackTrace();
 				}
@@ -145,13 +138,13 @@ public class TPSStat {
 			while(iterator.hasNext()){
 				interfacLogRecord=iterator.next();
 				recordParts=SPLIT_PATTERN.split(interfacLogRecord,0);
-				//Ìø¹ýÎÞÐ§µÄ¼ÇÂ¼
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä¼ï¿½Â¼
 				if(recordParts.length<7){
 				    continue;	
 				}
 				if(("request".equals(recordParts[2]))&&
-						(recordParts[6]/*ÕâÊÇÉè±¸ÃûESB*/.startsWith(selfDevice))){
-					timeStmp=recordParts[0];//Ê±¼ä´Á
+						(recordParts[6]/*ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ESB*/.startsWith(selfDevice))){
+					timeStmp=recordParts[0];//Ê±ï¿½ï¿½ï¿½
 					timeStmp=new String(timeStmp.substring(0,19).toCharArray());
 					String operName=recordParts[4];
 					reqCounter=resposity.get(timeStmp);
@@ -162,7 +155,7 @@ public class TPSStat {
 							 reqCounter=existingReqConuter;
 						}
 					}
-					//¼ÌÐø´¦Àíµ±Ç°Ïß³ÌÊý¾Ý
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½
 					if(isSrcDeviceEEligible(recordParts[5])){
 						reqCounter.incrementAndGet();
 					}

@@ -23,13 +23,11 @@ public class TestSetToReader {
 	BufferedReader logFile;
 	InputStream in=new SequenceInputStream(new Enumeration<InputStream>() {
 		private Iterator<String> iterator=log.iterator();
-		@Override
 		public boolean hasMoreElements() {
 			
 			return iterator.hasNext();
 		}
 		
-		@Override
 		public InputStream nextElement() {
 			String fileName=iterator.next();
 			InputStream in=null;

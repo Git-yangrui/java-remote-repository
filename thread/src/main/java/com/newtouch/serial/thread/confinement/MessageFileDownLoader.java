@@ -17,7 +17,7 @@ import com.newtouc.twophase_termination.AbstractTerminateableThread;
 
 
 /**
- * ´®ĞĞÏß³Ì·â±ÕµÄÊµÏÖÀà    ´®ĞĞÏß³ÌÔËĞĞ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì·ï¿½Õµï¿½Êµï¿½ï¿½ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author yangrui
  * 
  */
@@ -28,13 +28,11 @@ public class MessageFileDownLoader {
 		workThread=new WorkerThread(outputDir, ftpServer, username, password);
 	}
 	
-	//Æô¶¯
+	//ï¿½ï¿½ï¿½ï¿½
 	public void init(){
 		workThread.start();
 	}
 	
-	//ÏÂÔØÎÄ¼ş»á¼ÓÈëqueue¶ÓÁĞÖĞ   ÕâÀïÖ»ÊÇµ«Ò»¸öÁ´½Ó  ÒòÎªÓÃ»§ÃûºÍÃÜÂë¾ö¶¨Ò»¸ö¶ÔÏó£¬
-	//ÕâÀïÊµÏÖµÄ´®ĞĞÏß³Ì·â±ÕÊÇÖ¸µÄÏÂÔØµÄÈÎÎñ  ÎªÈÎÎñ1   ÈÎÎñ2  ÈÎÎñ3  £¬£¬£¬£¬£¬£¬£¬£¬ÏÖÔÚÖ»ÊÇÈ¥ÊµÏÖ1  2  3 µÄ´®ĞĞÊµÏÖ
 	public void download(String file){
 		workThread.download(file);
 	}
@@ -45,11 +43,11 @@ public class MessageFileDownLoader {
 		workThread.terminate();
 	}
 	private static class WorkerThread extends AbstractTerminateableThread {
-		// ½ÇÉ«¶ÔÁĞ
+		// ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
 		private final BlockingQueue<String> workQueue;
 		// promise
 		private final Future<FTPClient> ftpClientPromise;
-         //Êä³öÂ·¾¶
+         //ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 		private final String outputDir;
 
 		@SuppressWarnings("unused")
@@ -59,7 +57,7 @@ public class MessageFileDownLoader {
 			this.outputDir = outputDir;
 			this.ftpClientPromise = new FutureTask<FTPClient>(
 					new Callable<FTPClient>() {
-						@Override
+						
 						public FTPClient call() throws Exception {
 							FTPClient ftpClient = initFTPClient(ftpServer,
 									username, password);
@@ -105,9 +103,9 @@ public class MessageFileDownLoader {
 
 			return ftpClient;
 		}
-         //dorun ·½·¨»áÔÚ¸¸ÀàµÄrun ÖĞfor(;;)µ÷ÓÃ   µ±¸ÃÓÃ»§Ã»ÓĞµ÷ÓÃdownload·½·¨Ê±ºò ¼°Ã»ÓĞÈÎÎñÏÂÔØÕâÊ±ºòtake()Ò»Ö±´¦ÓÚ×èÈû×´Ì¬
-	     //µ±¸ÃÓÃ»§ÏòÀïÃæÌí¼ÓdownloadµÄÈÎÎñÊ±ºò¼°µ÷ÓÃdownload()·½·¨µÄÊÂ  Ïòqueue ÖĞ¼ÓÈëÒ»¸öÈÎÎñ£¬ÕâÊ±ºòtake£¨£©¿ÉÒÔÄÃµ½ÈÎÎñ  ÍùÏÂÖ´ĞĞ
-		//×ßµ½get()·½·¨Ê±ºò Õâ¸öÊÇÊÇ¸öpromise´úÀí£¬È¡³öftpClient¶ÔÏó  È»ºóµ÷ÓÃÏÂÔØ·½·¨      ÒòÎªÔÚ¸¸ÀàµÄ  run·½·¨ÊÇ for£¨;;£©ÎŞÏŞÑ­»·µÄ
+         //dorun ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½run ï¿½ï¿½for(;;)ï¿½ï¿½ï¿½ï¿½   ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ã»ï¿½Ğµï¿½ï¿½ï¿½downloadï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½take()Ò»Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	     //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½downloadï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò¼°µï¿½ï¿½ï¿½download()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½queue ï¿½Ğ¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½takeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+		//ï¿½ßµï¿½get()ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½promiseï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ftpClientï¿½ï¿½ï¿½ï¿½  È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½      ï¿½ï¿½Îªï¿½Ú¸ï¿½ï¿½ï¿½ï¿½  runï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ forï¿½ï¿½;;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
 		@Override
 		protected void doRun() throws Exception {
 			String file = workQueue.take();         

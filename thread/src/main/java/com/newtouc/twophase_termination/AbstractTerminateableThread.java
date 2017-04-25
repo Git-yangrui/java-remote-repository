@@ -84,7 +84,6 @@ public abstract class AbstractTerminateableThread
 		terminate();
 	}
 	
-	@Override
 	public void terminate() {
 		terminationToken.setToShutDown(true);
 		//System.out.println("terminate����  terminationToken.setToShutDown(true) ��"+System.currentTimeMillis());

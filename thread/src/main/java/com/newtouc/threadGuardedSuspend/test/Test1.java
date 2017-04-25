@@ -12,7 +12,6 @@ public class Test1 {
 		final int j=i;
 		arrayThread[i]=new Thread(new Runnable() {
 			
-			@Override
 			public void run() {
 				
 				try {
@@ -34,7 +33,6 @@ public class Test1 {
 		final int j=i;
 		arrayThread1[i]=new Thread(new Runnable() {
 			
-			@Override
 			public void run() {
 				try {
 					Thread.sleep(1000);

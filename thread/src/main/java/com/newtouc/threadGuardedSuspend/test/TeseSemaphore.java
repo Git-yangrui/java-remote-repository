@@ -14,7 +14,6 @@ public class TeseSemaphore {
 
 		Thread treThread = new Thread(new Runnable() {
 
-			@Override
 			public void run() {
 				while (true) {
 					try {
@@ -30,7 +29,6 @@ public class TeseSemaphore {
 
 		Thread treThread1 = new Thread(new Runnable() {
 
-			@Override
 			public void run() {
 				while (true) {
 					try {
