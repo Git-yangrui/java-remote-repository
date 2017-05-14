@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<job-scheduling-data
+	xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_2_0.xsd"
+	version="1.8">
+	<schedule>
+		<job>
+			<name>SCAN_DIR</name>
+			<group>SCAN_DIR_group1</group>
+			<description>  
+                                                            通过配置文件来执行job任务  
+            </description>
+			<job-class>  
+                com.yangrui.quartz.quartz.ScanDirectoryJob  
+            </job-class>
+			<job-data-map>
+				<entry>
+					<key>SCAN_DIR</key>
+					<value>c:\\iem</value>
+				</entry>
+			</job-data-map>
+		</job>
+		<trigger>
+			<simple>
+				<name>trigger1</name>
+				<group>trigger1_group1</group>
+				<job-name>SCAN_DIR</job-name>
+				<job-group>SCAN_DIR_group1</job-group>
+				<start-time>2017-05-14T11:46:00</start-time>
+				<repeat-count>10</repeat-count>
+				<repeat-interval>10000</repeat-interval>
+			</simple>
+		</trigger>
+	</schedule>
+</job-scheduling-data>  
