@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"  
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd  
+        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">  
+   
+    <bean id="methodCount" class="com.yangrui.spring_anlaysis1.MethodInvokeCountAdvice"/>  
+      
+    <bean id="methodLogger" class="com.yangrui.spring_anlaysis1.MethodLoggerAdvice"/>  
+      
+    <bean id="bussinessService" class="com.yangrui.spring_anlaysis1.BussinessServiceImpl"/>  
+      
+    <bean id="methodProxy" class="org.springframework.aop.framework.ProxyFactoryBean">  
+       <property name="proxyInterfaces">  
+         <value>com.yangrui.spring_anlaysis1.IBussinessService</value>  
+       </property>  
+        
+       <property name="target" >  
+         <ref bean="bussinessService" />
+           
+       </property>  
+         
+       <property name="interceptorNames">  
+          <list>  
+             <value>methodCount</value>  
+             <value>methodLogger</value>  
+          </list>  
+       </property>  
+    </bean>  
+            
+  
+</beans>
