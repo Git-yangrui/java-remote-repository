@@ -36,7 +36,7 @@ public class HdfsClientEasy {
      }
 	@Test
 	public void testUpload() throws IllegalArgumentException, IOException {
-		fs.copyFromLocalFile(new Path("F:\\fromFS.tar"), new Path("/aa/bb/"));
+		fs.copyFromLocalFile(new Path("E:\\新建文本文档.txt"), new Path("/src"));
 	}
 
 	@Test
