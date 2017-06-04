@@ -21,7 +21,6 @@ public class WordCountRunner {
         
         wcJob.setJarByClass(WordCountRunner.class);
         
-        
         wcJob.setMapperClass(MyWordCountMap.class);
         wcJob.setReducerClass(MyWordCountReduce.class);
         
