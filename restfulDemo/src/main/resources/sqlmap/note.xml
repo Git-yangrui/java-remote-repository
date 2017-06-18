@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="note">
+
+    <typeAlias alias="note" type="com.samsung.ax.restful.pojo.Note"/>
+    <typeAlias alias="query" type="com.samsung.ax.restful.pojo.Query"/>
+
+    <insert id="create" parameterClass="note">
+        INSERT INTO
+            note (sid, username, subject, content)
+        VALUES (
+            #sid#, #username#, #subject#, #content#
+        )
+        <selectKey resultClass="int" keyProperty="idx">
+            SELECT LAST_INSERT_ID() AS idx
+        </selectKey> 
+    </insert>
+    
+    <select id="sid" parameterClass="int" resultClass="String">
+        SELECT
+            sid
+        FROM
+            note
+        WHERE
+            idx = #idx# AND status = 1
+    </select>
+
+    <update id="update" parameterClass="note">
+        UPDATE
+            note
+        SET
+            subject = #subject#,
+            content = #content#
+        WHERE
+            idx = #idx# AND status = 1
+    </update>
+
+    <delete id="delete" parameterClass="note">
+        DELETE FROM 
+            note
+        WHERE 
+            idx = #idx# AND status = 1
+    </delete>
+    
+    <select id="idx" parameterClass="int" resultClass="note">
+        SELECT
+            idx, username, subject, access, content, createdate, updatedate
+        FROM
+            note
+        WHERE
+            idx = #idx# AND status = 1
+    </select>
+    
+    <update id="access" parameterClass="int">
+        UPDATE
+            note
+        SET
+            access = access + 1
+        WHERE
+            idx = #idx# AND status = 1
+    </update>
+
+    <select id="count" parameterClass="query" resultClass="int">
+        SELECT
+            COUNT(idx)
+        FROM
+            note
+        WHERE
+            status = 1
+            <dynamic prepend="AND">
+                <isNotNull property="search">
+                    (subject LIKE CONCAT('%', #search#, '%') OR content LIKE CONCAT('%', #search#, '%')) 
+                </isNotNull>
+            </dynamic>
+    </select>
+    
+    <select id="list" parameterClass="query" resultClass="note">
+        SELECT
+            idx, username, subject, access, createdate, updatedate
+        FROM
+            note
+        WHERE
+            status = 1
+            <dynamic prepend="AND">
+                <isNotNull property="search">
+                    (subject LIKE CONCAT('%', #search#, '%') OR content LIKE CONCAT('%', #search#, '%')) 
+                </isNotNull>
+            </dynamic>
+        ORDER BY idx DESC
+    </select>
+    
+</sqlMap>
