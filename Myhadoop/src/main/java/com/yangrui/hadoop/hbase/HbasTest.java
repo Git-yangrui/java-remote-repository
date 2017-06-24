@@ -16,6 +16,6 @@ public class HbasTest {
 		Configuration configuration = HBaseConfiguration.create();
 		configuration.set("hbase.zookeeper.quorum", "yangziyu01:2181,yangziyu02:2181,yangziyu03:2181");
 	    HTable mygirlsTable=new HTable(configuration, "mygirls");
-	    Put put =new Put(row)
+//	    Put put =new Put(row)
 	}
 }
