@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.MasterNotRunningException;
 import org.apache.hadoop.hbase.TableName;
@@ -18,6 +19,10 @@ public class HbaseDao {
 		HBaseAdmin admin = new HBaseAdmin(configuration);
 		TableName tableName = TableName.valueOf("mygirls");
 		HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
+		HColumnDescriptor base_info=new HColumnDescriptor("base_info");
+		base_info.setMaxVersions(3);
+		
+		hTableDescriptor.addFamily(base_info);
 		admin.createTable(hTableDescriptor);
 	}
 }
