@@ -20,6 +20,7 @@ public class WebSpider {
 		String regex = "http://[\\w+\\.?/?]+\\.[A-Za-z]+";
 		Pattern p = Pattern.compile(regex);
 		try {
+			
 			url = new URL("http://www.sina.com.cn/");
 			urlconn = url.openConnection();
 			pw = new PrintWriter(new FileWriter("e:/url.txt"), true);// 这里我们把收集到的链接存储在了E盘底下的一个叫做url的txt文件中
