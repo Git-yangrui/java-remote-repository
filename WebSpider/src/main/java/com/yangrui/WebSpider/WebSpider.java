@@ -46,7 +46,7 @@ public class WebSpider {
 			}
 			pw.close();
 		}
-
+        //foreach
 		List<String> readAllLines = Files.readAllLines(Paths.get("e:/url.txt"), Charset.defaultCharset());
 		System.out.println(readAllLines.size());
 		URL urlSub = null;
@@ -63,7 +63,8 @@ public class WebSpider {
 				while ((buffer = br.readLine()) != null) {
 					Matcher buf_m = p.matcher(buffer);
 					while (buf_m.find()) {
-						pw.println(buf_m.group());
+						//注释了此处 会生成大文件
+						//pw.println(buf_m.group());
 					}
 				}
 			} catch (Exception e) {
